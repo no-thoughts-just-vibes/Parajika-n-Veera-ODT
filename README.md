@@ -1,2 +1,3 @@
 # Parajika-n-Veera-ODT
-stuff we worked on during the ODT Module!
+Youtube link for Summative 1
+https://youtu.be/wmRNAlCpI0A
