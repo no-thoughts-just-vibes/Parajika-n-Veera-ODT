@@ -1,0 +1,40 @@
+from machine import Pin, PWM
+import time
+
+servo=PWM(Pin(14))
+ir1=Pin(4,Pin.IN, Pin.PULL_UP)
+ir2=Pin(25, Pin.IN, Pin.PULL_UP)
+pb=Pin(5, Pin.IN, Pin.PULL_UP)
+led1=Pin(18,Pin.OUT)
+led2=Pin(19,Pin.OUT)
+
+score=0
+servo.freq(50)
+
+print("Welcome to the game!")
+print("Press the push button to hit the ball!")
+
+while True:
+    pbv=pb.value()
+    if pbv==0:
+        for i in range(55,280,50):
+            servo.duty(i)
+    irv1=ir1.value()
+    irv2=ir2.value()
+    
+    if irv1==0:
+        score+=1
+        print("Your score is", score)
+        time.sleep(0.2)
+        led1.on()
+        time.sleep(0.5)
+        led1.off()
+    
+    if irv2==0:
+        score+=5
+        print("Bonus! Your score now is", score)
+        time.sleep(0.2)
+        led2.on()
+        time.sleep(0.5)
+        led2.off()
+    led2.off()
